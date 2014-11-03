@@ -14,12 +14,14 @@
 
     <script type="text/javascript">
       var socket = io('http://127.0.0.1:3001');
-      io.on('connection', function(socket){
-        socket.on('tweet', function(){
-          $('#twitts').append($('<tr/>').append('<td/>').html(
+      socket.on('tweet', function(tweet){
+        $('#twitts').prepend(
+          $('<tr/>').append(
+            $('<td/>').html(
             tweet.user.screen_name + ": " + tweet.text
-            ));
-        });
+            )
+          )
+        );
       });
     </script>
   </head>
