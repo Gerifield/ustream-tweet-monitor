@@ -4,7 +4,6 @@ var config = require('./config');
 var tw = new Twit(config);
 
 //var stream = tw.stream('statuses/sample');
-//var stream = tw.stream('statuses/firehose');
 var stream = tw.stream('statuses/filter', {
 	track: ['ustream', 'ustream.tv'],
 	language: 'en'
