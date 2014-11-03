@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Ustream tweet monitor</title>
+    <style>
+      
+    </style>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+
+    <script type="text/javascript">
+      var socket = io('http://127.0.0.1:3001');
+      io.on('connection', function(socket){
+        socket.on('tweet', function(){
+          $('#twitts').append($('<tr/>').append('<td/>').html(
+            tweet.user.screen_name + ": " + tweet.text
+            ));
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <table class="table table-striped" id="twitts">
+    </table>
+  </body>
+</html>
