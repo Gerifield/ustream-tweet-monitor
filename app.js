@@ -1,7 +1,7 @@
-var Twitter = require('twit');
+var Twit = require('twit');
 var config = require('./config');
 
-var tw = new Twitter(config);
+var tw = new Twit(config);
 
 //var stream = tw.stream('statuses/sample');
 //var stream = tw.stream('statuses/firehose');
