@@ -1,0 +1,15 @@
+{
+  "name": "ustream-tweet-monitor",
+  "version": "0.0.1",
+  "description": "Monitor tweets about ustream.",
+  "main": "app.js",
+  "dependencies": {
+    "twit": "^1.1.18"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
