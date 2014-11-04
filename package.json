@@ -12,6 +12,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Gerifield",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Gerifield/ustream-tweet-monitor.git"
+  }
 }
