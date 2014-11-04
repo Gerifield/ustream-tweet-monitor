@@ -24,7 +24,7 @@ client.on("error", function (err) {
 stream.on('tweet', function printTweet(tweet){
 	console.log(tweet.user.screen_name + ": " + tweet.text);
 	io.emit('tweet', tweet);
-	client.lpush(['tweets', tweet]);
+	client.lpush(['tweets', JSON.stringify(tweet)]);
 	client.ltrim(['tweets', 0, 10]);
 });
 
@@ -37,7 +37,7 @@ io.on('connection', function(socket){
 	client.get('tweets', function(err, replies){
 		if (!err) {
 			for (var i = replies.length - 1; i >= 0; i--) {
-				scket.emit('tweet', replies[i]);
+				scket.emit('tweet', JSON.parse(replies[i]));
 			};
 		}
 	});
