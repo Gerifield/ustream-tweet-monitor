@@ -24,8 +24,8 @@ client.on("error", function (err) {
 stream.on('tweet', function printTweet(tweet){
 	console.log(tweet.user.screen_name + ": " + tweet.text);
 	io.emit('tweet', tweet);
-	client.lpush(['tweets', JSON.stringify(tweet)]);
-	client.ltrim(['tweets', 0, 10]);
+	client.lpush('tweets', JSON.stringify(tweet));
+	client.ltrim('tweets', 0, 10);
 });
 
 stream.on('error', function printError(err){
