@@ -37,7 +37,7 @@ io.on('connection', function(socket){
 	client.get('tweets', function(err, replies){
 		if (!err) {
 			for (var i = replies.length - 1; i >= 0; i--) {
-				scket.emit('tweet', JSON.parse(replies[i]));
+				socket.emit('tweet', JSON.parse(replies[i]));
 			};
 		}
 	});
