@@ -5,6 +5,8 @@
   "main": "app.js",
   "dependencies": {
     "express": "^4.10.1",
+    "hiredis": "^0.1.17",
+    "redis": "^0.12.1",
     "socket.io": "^1.2.0",
     "twit": "^1.1.18"
   },

@@ -6,6 +6,9 @@ var io = require('socket.io')(3001);
 var app = require('express')();
 var http = require('http').Server(app);
 
+var redis = require('redis'),
+	client = redis.createClient();
+
 //var stream = tw.stream('statuses/sample');
 var stream = tw.stream('statuses/filter', {
 	track: ['ustream', 'ustream.tv'],
@@ -14,9 +17,15 @@ var stream = tw.stream('statuses/filter', {
 
 console.log('started');
 
+client.on("error", function (err) {
+        console.log("Redis error " + err);
+    });
+
 stream.on('tweet', function printTweet(tweet){
 	console.log(tweet.user.screen_name + ": " + tweet.text);
 	io.emit('tweet', tweet);
+	client.lpush(['tweets', tweet]);
+	client.ltrim(['tweets', 0, 10]);
 });
 
 stream.on('error', function printError(err){
@@ -25,6 +34,13 @@ stream.on('error', function printError(err){
 
 io.on('connection', function(socket){
 	console.log('New connection!')
+	client.get('tweets', function(err, replies){
+		if (!err) {
+			for (var i = replies.length - 1; i >= 0; i--) {
+				scket.emit('tweet', replies[i]);
+			};
+		}
+	});
 });
 
 
