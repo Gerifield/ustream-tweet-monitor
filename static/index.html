@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
 
     <script type="text/javascript">
-      var socket = io('http://tweet.gerifield.hu:3001');
+      var socket = io(window.location.origin + ':3001');
       socket.on('tweet', function(tweet){
         $('#twitts').prepend(
           $('<tr/>').append(
