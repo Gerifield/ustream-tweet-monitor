@@ -19,7 +19,7 @@
           $('<tr/>').append(
             $('<td/>').html(
             tweet.user.screen_name + ": " + tweet.text
-            )
+            ).hide().show('slow')
           )
         );
       });
