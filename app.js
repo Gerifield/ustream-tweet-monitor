@@ -12,7 +12,7 @@ var redis = require('redis'),
 //var stream = tw.stream('statuses/sample');
 var stream = tw.stream('statuses/filter', {
 	track: ['ustream', 'ustream.tv'],
-//	language: 'en'
+	language: 'en'
 });
 
 console.log('started');
