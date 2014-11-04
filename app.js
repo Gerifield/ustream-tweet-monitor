@@ -34,7 +34,7 @@ stream.on('error', function printError(err){
 
 io.on('connection', function(socket){
 	console.log('New connection!')
-	client.get('tweets', function(err, replies){
+	client.lrange('tweets', 0, 10, function(err, replies){
 		if (!err) {
 			for (var i = replies.length - 1; i >= 0; i--) {
 				socket.emit('tweet', JSON.parse(replies[i]));
